@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  become_user: true
+  connection: ssh
+  gather_facts: true
+  tasks:
+    - name: task executed
+      file: path=/opt/{{ item }} state=touch
+      with_items:
+        - vivek.txt
+        - sundar.txt
+        - navya.txt
+        - abc.txt
+        - xyz.txt
+        - aaa.txt
+        - vvv.txt
+        - a1.txt
+        - a2.txt
+        - a3.txt
+        - a4.txt
+      async: 2
+      poll: 1
+    - name: install python3
+      apt: name=ruby-full state=present
+      async: 2
+      poll: 1

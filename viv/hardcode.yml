@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become_user: true
+  connection: ssh
+  gather_facts: true
+  vars_files:
+    - sub.yml
+  tasks:
+    - name: install packages
+      apt: name='{{pkg}}' state=present

@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become_user: true
+  connection: ssh
+  gather_facts: true
+  vars_prompt:
+    - name: package
+      prompt: enter the package want to install
+  tasks:
+    - name: install packages
+      apt: name='{{package}}' state=present
